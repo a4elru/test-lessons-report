@@ -1,0 +1,16 @@
+{
+  "env": {
+    "node": true,
+    "es2020": true
+  },
+  "rules": {
+    "quotes": ["error", "single"],
+    "eol-last": ["error"],
+    "no-trailing-spaces": ["error"],
+    "linebreak-style": ["error", "windows"],
+    "no-mixed-spaces-and-tabs": ["error"],
+    "indent": ["error", 4],
+    "semi": ["error"]
+  },
+  "ignorePatterns": ["/client/static/*.js"]
+}
