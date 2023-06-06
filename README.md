@@ -9,21 +9,21 @@
 3. Клонируйте репозиторий и установите зависимости
 4. Запустите сервис - сервис будет доступен на http://localhost:3333
 
-# Endpoints
+# Endpoints /api
 
-## /api - получить сведения о занятиях
+## GET / - получить сведения о занятиях
 
 Пример запроса:
 
 ```http
-GET /api HTTP/1.1
+GET /api/ HTTP/1.1
 
 {
     "page": 1,
     "lessonsPerPage": 1,
     "date": "2019-01-09,2019-10-09",
     "studentsCount": 2,
-    "teacherIds": "1",
+    "teacherIds": [1],
     "status": 0
 }
 ```
@@ -77,7 +77,55 @@ GET /api HTTP/1.1
 {
     "ok": false,
     "error": {
-        "message": "Incorrect value of property 'date'."
+        "message": "date: incorrect date format"
+    }
+}
+```
+
+## POST /lessons - внести сведения о занятиях
+
+Пример запроса:
+
+```http
+POST /api/lessons HTTP/1.1
+
+{
+    "title": "Blue ocean",
+    "days": [2],
+    "firstDate": "2023-01-01",
+    "teacherIds": [1],
+    "lessonsCount": 7
+}
+```
+
+Пример ответа в случае успеха (результат - ID созданных строк в таблице lessons):
+
+```http
+200 OK
+
+{
+    "ok": true,
+    "result": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+    ]
+}
+```
+
+Пример ответа в случае ошибки:
+
+```http
+400 Bad Request
+
+{
+    "ok": false,
+    "error": {
+        "message": "firstDate: incorrect date format"
     }
 }
 ```

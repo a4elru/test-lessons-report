@@ -3,6 +3,9 @@
     "node": true,
     "es2020": true
   },
+  "extends": [
+    "eslint:recommended"
+  ],
   "rules": {
     "quotes": ["error", "single"],
     "eol-last": ["error"],
@@ -12,5 +15,8 @@
     "indent": ["error", 4],
     "semi": ["error"]
   },
-  "ignorePatterns": ["/client/static/*.js"]
+  "ignorePatterns": [
+    "/client/static/*.js",
+    "/tests/*.js"
+  ]
 }
